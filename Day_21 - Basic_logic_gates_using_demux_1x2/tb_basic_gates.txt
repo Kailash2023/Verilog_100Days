@@ -1,0 +1,20 @@
+module tb_basic_gates();
+
+reg a,b;
+wire y_not,y_and,y_or;
+
+basic_gates dut(a,b,y_not,y_and,y_or);
+
+always begin
+    a=1'b0; b=1'b0; #10
+    a=1'b0; b=1'b1; #10
+    a=1'b1; b=1'b0; #10
+    a=1'b1; b=1'b1; #10;
+end
+
+initial begin 
+    $monitor("a=%b,b=%b,b_not=%b,and=%b,or=%b",a,b,y_not,y_and,y_or);
+    #40 $finish;
+end
+
+endmodule
